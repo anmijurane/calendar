@@ -1,4 +1,14 @@
 
+//Base
+@import './base/base';
+
+//Pages
+@import './pages/loginScreen';
+
+// Elemens
+@import './elements/input';
+
+// Bulma
 @import '../../../node_modules/bulma/sass/base/_all.sass';
 @import '../../../node_modules/bulma/sass/components/_all.sass';
 @import '../../../node_modules/bulma/sass/elements/_all.sass';

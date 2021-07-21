@@ -1,0 +1,33 @@
+
+.login__box {
+  padding: 2em;
+  width: 50%;
+
+  div.field.is-grouped {
+    margin: 1.5em 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn__login{
+    padding: 1em;
+    border-radius: 20px;
+    width: 10em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
+}
+
+.container-login {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: darken($color: #000000, $amount: 0);
+}

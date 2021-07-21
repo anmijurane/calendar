@@ -1,0 +1,64 @@
+
+input.inpt {
+  
+  max-width: 100%;
+  width: 100%;
+  height: 2.5em;
+  font-size: 1rem;
+  border: 0;
+  background-color: $transparent;
+  border-bottom: 2px solid $blue-strong;
+  border-radius: 0;
+  outline: none;
+  color: $purple;
+
+  &:focus {
+    border-bottom: 2px solid lighten($color: $blue-strong, $amount: 20);
+    box-shadow: 0px 2px darken($color: $blue-strong, $amount: 10);
+  }
+
+}
+
+input.inpt.is-primary {
+  border-bottom: 2px solid $purple-white !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $purple-white, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $purple-white, $amount: 10);
+  }
+}
+input.inpt.is-link {
+  border-bottom: 2px solid $link !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $link, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $link, $amount: 10);
+  }
+}
+input.inpt.is-info {
+  border-bottom: 2px solid $info !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $info, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $info, $amount: 10);
+  }
+}
+input.inpt.is-success {
+  border-bottom: 2px solid $success !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $success, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $success, $amount: 10);
+  }
+}
+input.inpt.is-warning {
+  border-bottom: 2px solid $warning !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $warning, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $warning, $amount: 10);
+  }
+}
+input.inpt.is-danger {
+  border-bottom: 2px solid $danger !important;
+  &:focus {
+    border-bottom: 2px solid lighten($color: $danger, $amount: 20) !important;
+    box-shadow: 0px 2px darken($color: $danger, $amount: 10);
+  }
+}
+

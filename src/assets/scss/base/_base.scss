@@ -1,0 +1,34 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+
+$blue-white: #7AA8D6;
+$blue-grey: #567696;
+$blue-dark: #2a3a4a;
+$blue-strong: #1D2833;
+$purple: #A090D6;
+$purple-white: #BEAAFF;
+$purple-dark: #37324A;
+$purple-strong: #262233;
+$transparent: #fff0;
+$white: #fff;
+$dark: #000;
+
+
+$primary: $purple-dark;
+
+$link:    darken( $color: #485fc7, $amount: 25 );
+$info:    darken( $color: #3e8ed0, $amount: 25 );
+$success: darken( $color: #48c78e, $amount: 25 );
+$warning: darken( $color: #ffe08a, $amount: 25 );
+$danger:  darken( $color: #f14668, $amount: 25 );
+
+$text:    $purple-white;
+
+$background: $blue-dark;
+
+$scheme-main: $blue-grey;
+
+$body-background-color: $background;
+
+$family-sans-serif: "Short Stack", sans-serif;
+
