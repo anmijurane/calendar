@@ -1,12 +1,22 @@
-
 //Base
 @import './base/base';
 
+// dependency calendar
+@import '/node_modules/react-big-calendar/lib/css/react-big-calendar.css';
+@import './elements/DateTimePicker/clock';
+@import './elements/DateTimePicker/calendar';
+@import './elements/DateTimePicker/dateTime';
+
 //Pages
 @import './pages/loginScreen';
+@import './pages/calendarScreen';
 
 // Elemens
 @import './elements/input';
+
+// Components
+@import './components/calendar';
+@import './components/modal';
 
 // Bulma
 @import '../../../node_modules/bulma/sass/base/_all.sass';

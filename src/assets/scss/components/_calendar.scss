@@ -1,0 +1,44 @@
+
+.calendar-screen {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+.content__calendar {
+  height: 91.5vh;
+  max-height: 100vh;
+
+  .rbc-calendar {
+    height: 100%;
+  }
+
+  .rbc-day-bg.rbc-today {
+    background-color: lighten($color: $blue-grey, $amount: 15);
+    border-radius: 0px;
+    opacity: 0.8;
+    display: block;
+  }
+
+  .rbc-day-bg.rbc-off-range-bg {
+    background-color: $purple-strong;
+  }
+
+  .rbc-header {
+    color: $white;
+  }
+
+  .rbc-timeslot-group {
+    background-color: $blue-dark;
+  }
+
+}
+  
+.rbc-btn-group button {
+  color: $purple-white;
+
+  &.rbc-active {
+    color: $primary;
+  }
+
+}

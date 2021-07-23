@@ -5,13 +5,13 @@ import { CalendarRoutes } from './CalendarRoutes'
 
 export default function AppRouter() {
   return (
-    <div className="">
+    <>
       <Router>
         <Switch>
           <Route path='/auth' component={ AuthRoutes } />
           <Route path='/'     component={ CalendarRoutes } />
         </Switch>
       </Router>
-    </div>
+    </>
   )
 }
