@@ -1,6 +1,5 @@
-
 export const onDoubleClick = (e) => {
-  console.log(e);
+ 
 }
 
 export const onSelectEvent = (e) => {

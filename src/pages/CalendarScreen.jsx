@@ -6,11 +6,12 @@ import moment from 'moment';
 import { CalendarEvent } from '../components/calendar/CalendarEvent';
 import 'moment/locale/es';
 import {
-  onDoubleClick,
   onSelectEvent,
   onViewChange
 } from '../components/calendar/events/all';
 import { CalendarModal } from '../components/calendar/CalendarModal';
+import { useDispatch } from 'react-redux';
+import { uiOpenModal } from '../actions/ui';
 
 moment.locale('es');
 const localizer = momentLocalizer( moment );
@@ -33,16 +34,10 @@ export function CalendarScreen() {
 
   const [view, setView] = useState(localStorage.getItem('lastView') || 'month');
   
-  const eventStyleGetter = ( event, start, end, isSelected ) => {
+  const dispatch = useDispatch();
 
-    const style = {
-      backgroundColor: '#5a7b9c',
-      borderRadius: '0px',
-      opacity: 0.8,
-      display: 'block',
-    }
-
-    return { style }
+  const onDoubleClick = () => {
+    dispatch( uiOpenModal() );
   }
 
   return (
@@ -53,7 +48,6 @@ export function CalendarScreen() {
         startAccessor='start'
         endAccessor='end'
         messages={ messages }
-        eventStyleGetter={ eventStyleGetter }
         components={{
           event: CalendarEvent
         }}
