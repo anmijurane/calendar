@@ -18,7 +18,17 @@ export function FormEvent() {
     notes: '',
   });
 
-  const { title, start, end, notes } = formValues;
+  const initialUIState = {
+    isValid: false,
+    title: { isAnError: false, messageInfo: '', },
+    start: { isAnError: false, messageInfo: '', },
+    end:   { isAnError: false, messageInfo: '', },
+    notes: { isAnError: false, messageInfo: '', },
+  }
+
+  const [UIFormErr, setUIFormErr] = useState(initialUIState)
+
+  const { title, start, end, notes } = formValues; 
 
   const handleChangeInputValues = ({ target }) => {
     setFormValues({
@@ -46,10 +56,37 @@ export function FormEvent() {
   const handleSubmitEvent = (e) => {
     e.preventDefault();
 
-    console.log('====================================');
-    console.log(formValues);
-    console.log('====================================');
+    const momentStart = moment( start );
+    const momentEnd = moment( end );
 
+    if( momentStart.isSameOrAfter( momentEnd ) ) {
+      setUIFormErr({
+        ...UIFormErr,
+        end:{ isAnError: true, messageInfo: 'Tiene que ser mayor que la fecha de inicio' }
+      })
+      return null;
+    }
+    if (title.length < 1) {
+      setUIFormErr({
+        ...UIFormErr,
+        title:{ isAnError: true, messageInfo: 'Tiene que tener mas de 1 caracter' }
+      })
+      return null;
+    }
+    if (notes.length <= 0) {
+      setUIFormErr({
+        ...UIFormErr,
+        notes: { isAnError: true, messageInfo: 'Tiene que tener mas de 1 caracter' }
+      })
+      return null;
+    }
+   
+    setUIFormErr({
+      ...initialUIState,
+      isValid: true
+    });
+
+    return null;
   }
 
   return (
@@ -65,6 +102,9 @@ export function FormEvent() {
             value={ title }
             onChange={ handleChangeInputValues }
           />
+          {UIFormErr.title.isAnError && (
+            <p className="help is-danger"> { UIFormErr.title.messageInfo } </p>
+          )}
         </div>
       </div>
       
@@ -75,6 +115,9 @@ export function FormEvent() {
             onChange={ handleChangeStartEvent }
             value={ start }
           />
+          {UIFormErr.start.isAnError && (
+            <p className="help is-danger"> { UIFormErr.start.messageInfo } </p>
+          )}
         </div>
       </div>
 
@@ -87,6 +130,9 @@ export function FormEvent() {
             minDate={ start }
             locate='es'
           />
+          {UIFormErr.end.isAnError && (
+            <p className="help is-danger"> { UIFormErr.end.messageInfo } </p>
+          )}
         </div>
       </div>
 
@@ -99,11 +145,16 @@ export function FormEvent() {
             name='notes'
             onChange={ handleChangeInputValues }
           ></textarea>
+          {UIFormErr.notes.isAnError && (
+            <p className="help is-danger"> { UIFormErr.notes.messageInfo } </p>
+          )}
         </div>
       </div>
 
       <div className="field">
-        <button className="button is-link is-fullwidth">
+        <button
+          className="button is-link is-fullwidth"
+        >
           <span className="icon">
             <FaRegSave />
           </span>
