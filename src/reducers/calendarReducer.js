@@ -1,4 +1,5 @@
 import moment from "moment";
+import { AiTwotoneEyeInvisible } from "react-icons/ai";
 import { types } from "../types/types";
 
 const initialState = {
@@ -38,6 +39,15 @@ export function calendarReducer( state = initialState, action ) {
         events: state.events.map(
           evnt => ( evnt.id == action.payload.id) ? action.payload : evnt
         )
+      }
+    
+    case types.eventDelete:
+      return {
+        ...state,
+        events: state.events.filter(
+          evnt => ( evnt.id !== state.activeEvent.id )
+        ),
+        activeEvent: null,
       }
 
     default:
