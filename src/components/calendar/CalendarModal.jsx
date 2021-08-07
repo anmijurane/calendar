@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { setActiveNote } from '../../actions/events';
 import { uiCloseModal } from '../../actions/ui';
 import { customStyles } from '../../helpers/center_modal_styles';
 import { FormEvent } from './FormEvent';
@@ -15,6 +16,7 @@ export function CalendarModal() {
 
   const closeModal = () => {
     dispatch( uiCloseModal() );
+    dispatch( setActiveNote() );
   }
 
   return (

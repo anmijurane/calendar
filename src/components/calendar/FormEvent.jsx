@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegSave } from 'react-icons/fa';
 import moment from 'moment';
 import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewEvent, updateEvent } from '../../actions/events';
+import { uiCloseModal } from '../../actions/ui';
 
 const startDate = moment().milliseconds(0).second(0);
 const endDate = moment().milliseconds(0).second(0).add(1, 'hours');
 
 export function FormEvent() {
 
+  const dispatch = useDispatch();
   const [startDateEvent, setStartDateEvent] = useState(startDate.toDate());
   const [endDateEvent, setEndDateEvent] = useState(endDate.toDate());
+  const { activeEvent } = useSelector(state => state.event);
 
   const [formValues, setFormValues] = useState({
     title: '',
@@ -53,6 +58,10 @@ export function FormEvent() {
     setEndDateEvent(time);
   }
 
+  useEffect(() => {
+    if ( activeEvent ) setFormValues( activeEvent )
+  }, [activeEvent, setFormValues]);
+
   const handleSubmitEvent = (e) => {
     e.preventDefault();
 
@@ -86,6 +95,19 @@ export function FormEvent() {
       isValid: true
     });
 
+    if ( activeEvent ) {
+      dispatch( updateEvent( formValues ) );
+    } else {
+      dispatch( addNewEvent({
+        ...formValues,
+        id: new Date().getTime(),
+        user: {
+          _id: 856533,
+          name: 'Andres Jurado',
+        }
+      }) );
+    }
+    dispatch( uiCloseModal() );
     return null;
   }
 

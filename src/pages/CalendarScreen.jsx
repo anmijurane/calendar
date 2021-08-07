@@ -10,34 +10,25 @@ import {
   onViewChange
 } from '../components/calendar/events/all';
 import { CalendarModal } from '../components/calendar/CalendarModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../actions/ui';
+import { setActiveNote } from '../actions/events';
+import { Fab } from '../components/elements/Fab';
 
 moment.locale('es');
 const localizer = momentLocalizer( moment );
 
-const events = [
-  {
-    title: 'Examen Final',
-    start: moment().toDate(),
-    end: moment().add(2, 'hours').toDate(),
-    bgcolor: '#fafafa',
-    notes: [''],
-    user: {
-      _id: 856533,
-      name: 'Andres Jurado',
-    }
-  }
-];
-
 export function CalendarScreen() {
+
+  const { events } = useSelector(state => state.event);
 
   const [view, setView] = useState(localStorage.getItem('lastView') || 'month');
   
   const dispatch = useDispatch();
 
-  const onDoubleClick = () => {
-    dispatch( uiOpenModal() );
+  const onDoubleClick = (e) => {
+    dispatch( uiOpenModal()   );
+    dispatch( setActiveNote(e) );
   }
 
   return (
@@ -59,6 +50,7 @@ export function CalendarScreen() {
         onDoubleClickEvent={ onDoubleClick }
         view={ view }
       />
+      <Fab />
       <CalendarModal />
     </div>
     
